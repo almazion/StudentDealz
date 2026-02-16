@@ -40,7 +40,7 @@ public class ItemDealAdapter extends RecyclerView.Adapter<ItemDealViewHolder> {
     holder.Item.setImageResource(item.getItem());
     holder.Discount.setText(item.getDiscount());
     holder.Partner.setText(item.getPartner());
-    holder.Food.setOnClickListener(new View.OnClickListener() {
+    holder.itemView.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             Intent intent = new Intent(view.getContext(), activity_category.class);

@@ -21,6 +21,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<ItemDealViewHolder> {
      items.add(new Item(R.drawable.item3, "10%", "KING KONG"));
      items.add(new Item(R.drawable.item7, "23%", "Pizza Hut"));
      items.add(new Item(R.drawable.item8, "18%", "japanika"));
+     items.add(new Item(R.drawable.item9, "16%", "BBB"));
  }
 
     @NonNull

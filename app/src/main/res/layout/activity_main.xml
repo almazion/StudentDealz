@@ -8,17 +8,21 @@
     android:background="@color/white"
     tools:context=".MainActivity">
 
-    <TextView
+    <Button
+        style="?android:attr/borderlessButtonStyle"
         android:id="@+id/clothing"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
         android:layout_marginTop="15dp"
         android:background="#2B424242"
+        android:minHeight="0dp"
+        android:minWidth="0dp"
         android:padding="5dp"
         android:paddingStart="15dp"
         android:paddingEnd="15dp"
         android:text="Clothing"
+        android:textAllCaps="false"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -26,7 +30,8 @@
         app:layout_constraintStart_toEndOf="@+id/food"
         app:layout_constraintTop_toBottomOf="@+id/categories" />
 
-    <TextView
+    <Button
+        style="?android:attr/borderlessButtonStyle"
         android:id="@+id/attractions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -34,10 +39,13 @@
         android:layout_marginTop="76dp"
         android:layout_marginEnd="26dp"
         android:background="#2B424242"
+        android:minHeight="0dp"
+        android:minWidth="0dp"
         android:padding="5dp"
         android:paddingStart="15dp"
         android:paddingEnd="15dp"
         android:text="Attractions"
+        android:textAllCaps="false"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -101,17 +109,21 @@
         app:layout_constraintStart_toEndOf="@+id/logo"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+    <Button
+        style="?android:attr/borderlessButtonStyle"
         android:id="@+id/food"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="22dp"
         android:layout_marginTop="15dp"
         android:background="#2B424242"
+        android:minHeight="0dp"
+        android:minWidth="0dp"
         android:padding="5dp"
         android:paddingStart="15dp"
         android:paddingEnd="15dp"
         android:text="Food"
+        android:textAllCaps="false"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -119,24 +131,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/categories" />
 
-    <TextView
+    <Button
+        style="?android:attr/borderlessButtonStyle"
         android:id="@+id/office"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="22dp"
         android:layout_marginTop="20dp"
         android:background="#2B424242"
+        android:minHeight="0dp"
+        android:minWidth="0dp"
         android:padding="5dp"
         android:paddingStart="15dp"
         android:paddingEnd="15dp"
         android:text="Office"
+        android:textAllCaps="false"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/food" />
 
-    <TextView
+    <Button
+        style="?android:attr/borderlessButtonStyle"
         android:id="@+id/electronics"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -144,10 +161,13 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="149dp"
         android:background="#2B424242"
+        android:minHeight="0dp"
+        android:minWidth="0dp"
         android:padding="5dp"
         android:paddingStart="15dp"
         android:paddingEnd="15dp"
         android:text="Electronics"
+        android:textAllCaps="false"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"

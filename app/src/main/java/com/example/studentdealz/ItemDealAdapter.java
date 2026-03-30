@@ -43,8 +43,7 @@ public class ItemDealAdapter extends RecyclerView.Adapter<ItemDealViewHolder> {
     holder.itemView.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Intent intent = new Intent(view.getContext(), activity_category.class);
-            view.getContext().startActivity(intent);
+            //add barcode later
         }
     });
     }

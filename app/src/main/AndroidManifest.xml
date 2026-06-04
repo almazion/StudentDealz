@@ -2,6 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <queries>
+        <intent>
+            <action android:name="android.media.action.IMAGE_CAPTURE" />
+        </intent>
+    </queries>
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -12,11 +20,33 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.StudentDealz">
         <activity
-            android:name=".activity_category"
+            android:name=".CategoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SignUpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".StudentIdPhotoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ConfirmStudentDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ManualSignUpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".StartActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="false" />
+        <activity
+            android:name=".SplashActivity"
+            android:exported="true"
+            android:theme="@style/Theme.StudentDealz.Launcher">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

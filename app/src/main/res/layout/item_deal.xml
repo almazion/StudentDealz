@@ -1,94 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/itemdeal"
     android:layout_width="match_parent"
-    android:layout_height="150dp"
-    android:background="#11E91E63"
-    android:outlineAmbientShadowColor="#E91E63"
-    android:outlineSpotShadowColor="@color/accent_pink"
-    android:padding="8dp">
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp"
+    app:cardBackgroundColor="@color/card_background"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="4dp"
+    app:strokeColor="@color/card_stroke"
+    app:strokeWidth="1dp">
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginEnd="2dp"
-        android:layout_marginBottom="2dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="136dp"
+        android:padding="12dp">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/card"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/item"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:background="@color/accent_pink_light"
+            android:contentDescription="@string/deal_image"
+            android:padding="4dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@drawable/item1" />
 
-            <ImageView
-                android:id="@+id/item"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:layout_marginStart="11dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:background="@color/accent_pink"
-                android:padding="2dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@drawable/item1" />
+        <TextView
+            android:id="@+id/discount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:textColor="@color/accent_pink"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/item"
+            app:layout_constraintTop_toTopOf="@+id/item"
+            tools:text="20%" />
 
-            <TextView
-                android:id="@+id/discount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="63dp"
-                android:layout_marginTop="30dp"
-                android:fontFamily="sans-serif"
-                android:text="20%"
-                android:textAppearance="@style/Base.Theme.StudentDealz"
-                android:textColor="@color/accent_pink"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                android:typeface="normal"
-                app:layout_constraintStart_toEndOf="@+id/item"
-                app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/off"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:text="OFF"
+            android:textColor="@color/accent_pink"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintBaseline_toBaselineOf="@+id/discount"
+            app:layout_constraintStart_toEndOf="@+id/discount" />
 
-            <TextView
-                android:id="@+id/off"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginEnd="78dp"
-                android:text="OFF"
-                android:textAppearance="@style/Widget.Support.CoordinatorLayout"
-                android:textColor="@color/accent_pink"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/discount"
-                app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/partner"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="6dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/text_primary"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/item"
+            app:layout_constraintTop_toBottomOf="@+id/discount"
+            tools:text="GOLDA" />
 
-            <TextView
-                android:id="@+id/partner"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="82dp"
-                android:layout_marginTop="1dp"
-                android:layout_marginEnd="94dp"
-                android:layout_marginBottom="24dp"
-                android:text="GOLDA"
-                android:textSize="25sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/item"
-                app:layout_constraintTop_toBottomOf="@+id/discount" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/dealCategory"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:textColor="@color/text_secondary"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/item"
+            app:layout_constraintTop_toBottomOf="@+id/partner"
+            tools:text="Food" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

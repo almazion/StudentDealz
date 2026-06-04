@@ -5,182 +5,174 @@
     android:id="@+id/mainscreen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/screen_background"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
     tools:context=".MainActivity">
 
-    <Button
-        style="?android:attr/borderlessButtonStyle"
-        android:id="@+id/clothing"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="15dp"
-        android:background="#2B424242"
-        android:minHeight="0dp"
-        android:minWidth="0dp"
-        android:padding="5dp"
-        android:paddingStart="15dp"
-        android:paddingEnd="15dp"
-        android:text="Clothing"
-        android:textAllCaps="false"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/attractions"
-        app:layout_constraintStart_toEndOf="@+id/food"
-        app:layout_constraintTop_toBottomOf="@+id/categories" />
-
-    <Button
-        style="?android:attr/borderlessButtonStyle"
-        android:id="@+id/attractions"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="76dp"
-        android:layout_marginEnd="26dp"
-        android:background="#2B424242"
-        android:minHeight="0dp"
-        android:minWidth="0dp"
-        android:padding="5dp"
-        android:paddingStart="15dp"
-        android:paddingEnd="15dp"
-        android:text="Attractions"
-        android:textAllCaps="false"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
+    <View
+        android:id="@+id/topHeaderBackground"
+        android:layout_width="0dp"
+        android:layout_height="128dp"
+        android:background="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/clothing"
-        app:layout_constraintTop_toBottomOf="@+id/logo" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/logo"
-        android:layout_width="320dp"
-        android:layout_height="92dp"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="0dp"
+        android:layout_height="88dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/app_name"
+        app:layout_constraintEnd_toStartOf="@+id/search"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/goodlogo" />
 
+    <SearchView
+        android:id="@+id/search"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/search_background"
+        android:iconifiedByDefault="true"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/logoutButton"
+        app:layout_constraintStart_toEndOf="@+id/logo"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/logoutButton"
+        style="@style/Widget.Material3.Button.IconButton"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="40dp"
+        android:contentDescription="@string/log_out"
+        app:backgroundTint="@color/accent_pink_light"
+        app:icon="@drawable/ic_logout"
+        app:iconGravity="textStart"
+        app:iconPadding="0dp"
+        app:iconTint="@color/text_primary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/categories"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="72dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="292dp"
         android:text="Categories"
-        android:textColor="@color/black"
-        android:textSize="30sp"
+        android:textColor="@color/text_primary"
+        android:textSize="26sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logo" />
 
+    <LinearLayout
+        android:id="@+id/categoryGrid"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/categories">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/food"
+                style="@style/Widget.StudentDealz.CategoryButton"
+                android:layout_width="0dp"
+                android:layout_height="56dp"
+                android:layout_marginEnd="4dp"
+                android:layout_weight="1"
+                android:text="Food"
+                android:textSize="14sp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/clothing"
+                style="@style/Widget.StudentDealz.CategoryButton"
+                android:layout_width="0dp"
+                android:layout_height="56dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+                android:layout_weight="1"
+                android:text="Clothing"
+                android:textSize="14sp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/attractions"
+                style="@style/Widget.StudentDealz.CategoryButton"
+                android:layout_width="0dp"
+                android:layout_height="56dp"
+                android:layout_marginStart="4dp"
+                android:layout_weight="1"
+                android:text="Attractions"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:baselineAligned="false"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/office"
+                style="@style/Widget.StudentDealz.CategoryButton"
+                android:layout_width="0dp"
+                android:layout_height="56dp"
+                android:layout_marginEnd="4dp"
+                android:layout_weight="1"
+                android:text="Office"
+                android:textSize="14sp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/electronics"
+                style="@style/Widget.StudentDealz.CategoryButton"
+                android:layout_width="0dp"
+                android:layout_height="56dp"
+                android:layout_marginStart="4dp"
+                android:layout_weight="1"
+                android:text="Electronics"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </LinearLayout>
+
     <TextView
         android:id="@+id/categories2"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="22dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="145dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginTop="24dp"
         android:text="This Week's Deals"
-        android:textColor="@color/black"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/rv"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/office" />
-
-    <SearchView
-        android:id="@+id/search"
-        android:layout_width="40dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="75dp"
-        android:layout_marginEnd="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/logo"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        style="?android:attr/borderlessButtonStyle"
-        android:id="@+id/food"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="22dp"
-        android:layout_marginTop="15dp"
-        android:background="#2B424242"
-        android:minHeight="0dp"
-        android:minWidth="0dp"
-        android:padding="5dp"
-        android:paddingStart="15dp"
-        android:paddingEnd="15dp"
-        android:text="Food"
-        android:textAllCaps="false"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/clothing"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/categories" />
-
-    <Button
-        style="?android:attr/borderlessButtonStyle"
-        android:id="@+id/office"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="22dp"
-        android:layout_marginTop="20dp"
-        android:background="#2B424242"
-        android:minHeight="0dp"
-        android:minWidth="0dp"
-        android:padding="5dp"
-        android:paddingStart="15dp"
-        android:paddingEnd="15dp"
-        android:text="Office"
-        android:textAllCaps="false"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/food" />
-
-    <Button
-        style="?android:attr/borderlessButtonStyle"
-        android:id="@+id/electronics"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="149dp"
-        android:background="#2B424242"
-        android:minHeight="0dp"
-        android:minWidth="0dp"
-        android:padding="5dp"
-        android:paddingStart="15dp"
-        android:paddingEnd="15dp"
-        android:text="Electronics"
-        android:textAllCaps="false"
-        android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textColor="@color/text_primary"
+        android:textSize="26sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/office"
-        app:layout_constraintTop_toBottomOf="@+id/clothing" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/categoryGrid" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:paddingLeft="4dp"
-        android:paddingRight="4dp"
+        android:layout_marginTop="8dp"
+        android:clipToPadding="false"
+        android:paddingStart="2dp"
+        android:paddingEnd="2dp"
+        android:paddingBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

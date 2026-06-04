@@ -8,16 +8,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class ItemDealViewHolder extends RecyclerView.ViewHolder {
-  public ImageView Item;
-  public TextView Discount;
-  public TextView Partner;
-  public TextView Food;
+  public ImageView itemImage;
+  public TextView discount;
+  public TextView partner;
+  public TextView category;
 
     public ItemDealViewHolder(@NonNull View itemView) {
         super(itemView);
-        Item = itemView.findViewById(R.id.item);
-        Discount = itemView.findViewById(R.id.discount);
-        Partner = itemView.findViewById(R.id.partner);
-        Food = itemView.findViewById(R.id.food);
+        itemImage = itemView.findViewById(R.id.item);
+        discount = itemView.findViewById(R.id.discount);
+        partner = itemView.findViewById(R.id.partner);
+        category = itemView.findViewById(R.id.dealCategory);
     }
 }

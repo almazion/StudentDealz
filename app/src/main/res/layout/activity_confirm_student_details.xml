@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/onboarding_background"
+    android:fillViewport="true"
+    tools:context=".ConfirmStudentDetailsActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="700dp"
+        android:paddingBottom="24dp">
+
+        <ImageButton
+            android:id="@+id/confirmBackButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="12dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/back"
+            android:padding="10dp"
+            android:src="@drawable/ic_back_arrow"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/login_purple" />
+
+        <ImageView
+            android:id="@+id/confirmLogo"
+            android:layout_width="0dp"
+            android:layout_height="64dp"
+            android:layout_marginStart="52dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="52dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/app_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/goodlogo" />
+
+        <TextView
+            android:id="@+id/confirmTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="52dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="52dp"
+            android:gravity="center"
+            android:text="@string/confirm_student_details_title"
+            android:textColor="@color/onboarding_text"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/confirmLogo" />
+
+        <TextView
+            android:id="@+id/confirmSubtitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="52dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="52dp"
+            android:gravity="center"
+            android:text="@string/confirm_student_details_subtitle"
+            android:textColor="@color/text_secondary"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/confirmTitle" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/confirmFullNameInputLayout"
+            style="@style/Widget.StudentDealz.LoginInput"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="52dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="52dp"
+            android:hint="@string/full_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/confirmSubtitle">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/confirmFullNameEditText"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:inputType="textPersonName|textCapWords"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:textColor="@color/onboarding_text"
+                android:textSize="18sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/confirmIdNumberInputLayout"
+            style="@style/Widget.StudentDealz.LoginInput"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="52dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="52dp"
+            android:hint="@string/id_number"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/confirmFullNameInputLayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/confirmIdNumberEditText"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:inputType="number"
+                android:maxLength="9"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:textColor="@color/onboarding_text"
+                android:textSize="18sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/confirmInstitutionInputLayout"
+            style="@style/Widget.StudentDealz.LoginInput"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="52dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="52dp"
+            android:hint="@string/university_college"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/confirmIdNumberInputLayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/confirmInstitutionEditText"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:inputType="textCapWords"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:textColor="@color/onboarding_text"
+                android:textSize="18sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/confirmEmailInputLayout"
+            style="@style/Widget.StudentDealz.LoginInput"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="52dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="52dp"
+            android:hint="@string/email_address"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/confirmInstitutionInputLayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/confirmEmailEditText"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:inputType="textEmailAddress"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:textColor="@color/onboarding_text"
+                android:textSize="18sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/confirmPasswordInputLayout"
+            style="@style/Widget.StudentDealz.LoginInput"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="52dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="52dp"
+            android:hint="@string/password"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/confirmEmailInputLayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/confirmPasswordEditText"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:inputType="textPassword"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:textColor="@color/onboarding_text"
+                android:textSize="18sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/confirmErrorText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="52dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="52dp"
+            android:gravity="center"
+            android:minHeight="18dp"
+            android:textColor="@color/error_red"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/confirmPasswordInputLayout" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/confirmCreateAccountButton"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_marginStart="52dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="52dp"
+            android:background="@drawable/button_gradient"
+            android:text="@string/create_account"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:backgroundTint="@null"
+            app:cornerRadius="8dp"
+            app:elevation="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/confirmErrorText" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

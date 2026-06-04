@@ -1,3 +1,33 @@
 <resources>
     <string name="app_name">StudentDealz</string>
+    <string name="back">Back</string>
+    <string name="deal_image">Deal image</string>
+    <string name="splash_tagline">Find Your Student\nDiscounts</string>
+    <string name="start_title">Let’s Get Started</string>
+    <string name="start_subtitle">Create an account to access\nexclusive student discounts!</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="log_in">Log in</string>
+    <string name="already_member_login">Already a member? Log in</string>
+    <string name="login_title">Log In</string>
+    <string name="email_address">Email Address</string>
+    <string name="password">Password</string>
+    <string name="dont_have_account_signup">Don’t have an account? Sign Up</string>
+    <string name="signup_title">Sign up</string>
+    <string name="manual_signup">Manual Sign-Up</string>
+    <string name="student_id_photo">Student ID Photo</string>
+    <string name="manual_signup_title">Manual Sign Up</string>
+    <string name="manual_signup_subtitle">Set up your account using\npersonal details</string>
+    <string name="full_name">Full Name</string>
+    <string name="id_number">ID Number</string>
+    <string name="university_college">University / College</string>
+    <string name="or">or</string>
+    <string name="upload_student_id_photo">Upload Student ID Photo</string>
+    <string name="student_id_subtitle">Upload or take a photo of your\nstudent ID card</string>
+    <string name="student_id_hint">Make sure all details are\nclearly visible</string>
+    <string name="upload_photo">Upload Photo</string>
+    <string name="take_photo">Take Photo</string>
+    <string name="confirm_student_details_title">Confirm Student Details</string>
+    <string name="confirm_student_details_subtitle">Review the details from your student ID</string>
+    <string name="create_account">Create Account</string>
+    <string name="log_out">Log out</string>
 </resources>

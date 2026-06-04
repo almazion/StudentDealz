@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/onboarding_background"
+    tools:context=".SignUpActivity">
+
+    <ImageButton
+        android:id="@+id/signUpBackButton"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/back"
+        android:padding="10dp"
+        android:src="@drawable/ic_back_arrow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/login_purple" />
+
+    <ImageView
+        android:id="@+id/signUpLogo"
+        android:layout_width="0dp"
+        android:layout_height="76dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginEnd="48dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/app_name"
+        app:layout_constraintBottom_toTopOf="@+id/signUpTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:srcCompat="@drawable/goodlogo" />
+
+    <TextView
+        android:id="@+id/signUpTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="48dp"
+        android:gravity="center"
+        android:text="@string/signup_title"
+        android:textColor="@color/onboarding_text"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/manualSignUpButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signUpLogo" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/manualSignUpButton"
+        style="@style/Widget.StudentDealz.SignUpChoiceButton"
+        android:layout_width="0dp"
+        android:layout_height="104dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="58dp"
+        android:layout_marginEnd="48dp"
+        android:text="@string/manual_signup"
+        android:textColor="@color/login_purple"
+        app:layout_constraintBottom_toTopOf="@+id/studentIdPhotoButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signUpTitle"
+        app:strokeColor="@color/login_purple" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/studentIdPhotoButton"
+        style="@style/Widget.StudentDealz.SignUpChoiceButton"
+        android:layout_width="0dp"
+        android:layout_height="104dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="48dp"
+        android:text="@string/student_id_photo"
+        android:textColor="@color/student_id_red"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/manualSignUpButton"
+        app:strokeColor="@color/student_id_red" />
+</androidx.constraintlayout.widget.ConstraintLayout>

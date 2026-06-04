@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/onboarding_background"
+    android:fillViewport="true"
+    tools:context=".ManualSignUpActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="700dp"
+        android:paddingBottom="24dp">
+
+    <ImageButton
+        android:id="@+id/manualBackButton"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/back"
+        android:padding="10dp"
+        android:src="@drawable/ic_back_arrow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/login_purple" />
+
+    <ImageView
+        android:id="@+id/manualLogo"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginEnd="52dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/app_name"
+        app:layout_constraintBottom_toTopOf="@+id/manualTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:srcCompat="@drawable/goodlogo" />
+
+    <TextView
+        android:id="@+id/manualTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="52dp"
+        android:gravity="center"
+        android:text="@string/manual_signup_title"
+        android:textColor="@color/onboarding_text"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/manualSubtitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/manualLogo" />
+
+    <TextView
+        android:id="@+id/manualSubtitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="52dp"
+        android:gravity="center"
+        android:text="@string/manual_signup_subtitle"
+        android:textColor="@color/text_secondary"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/fullNameInputLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/manualTitle" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/fullNameInputLayout"
+        style="@style/Widget.StudentDealz.LoginInput"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="52dp"
+        android:hint="@string/full_name"
+        app:layout_constraintBottom_toTopOf="@+id/manualEmailInputLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/manualSubtitle">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/fullNameEditText"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:inputType="textPersonName|textCapWords"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:textColor="@color/onboarding_text"
+            android:textSize="18sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/manualEmailInputLayout"
+        style="@style/Widget.StudentDealz.LoginInput"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="52dp"
+        android:hint="@string/email_address"
+        app:layout_constraintBottom_toTopOf="@+id/idNumberInputLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fullNameInputLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/manualEmailEditText"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:inputType="textEmailAddress"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:textColor="@color/onboarding_text"
+            android:textSize="18sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/idNumberInputLayout"
+        style="@style/Widget.StudentDealz.LoginInput"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="52dp"
+        android:hint="@string/id_number"
+        app:layout_constraintBottom_toTopOf="@+id/manualInstitutionInputLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/manualEmailInputLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/idNumberEditText"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:inputType="number"
+            android:maxLength="9"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:textColor="@color/onboarding_text"
+            android:textSize="18sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/manualInstitutionInputLayout"
+        style="@style/Widget.StudentDealz.LoginInput"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="52dp"
+        android:hint="@string/university_college"
+        app:layout_constraintBottom_toTopOf="@+id/manualPasswordInputLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idNumberInputLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/manualInstitutionEditText"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:inputType="textCapWords"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:textColor="@color/onboarding_text"
+            android:textSize="18sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/manualPasswordInputLayout"
+        style="@style/Widget.StudentDealz.LoginInput"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="52dp"
+        android:hint="@string/password"
+        app:layout_constraintBottom_toTopOf="@+id/signUpErrorText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/manualInstitutionInputLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/manualPasswordEditText"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:inputType="textPassword"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:textColor="@color/onboarding_text"
+            android:textSize="18sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/signUpErrorText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="52dp"
+        android:gravity="center"
+        android:minHeight="18dp"
+        android:textColor="@color/error_red"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/manualSubmitButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/manualPasswordInputLayout" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/manualSubmitButton"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="52dp"
+        android:background="@drawable/button_gradient"
+        android:text="@string/sign_up"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:backgroundTint="@null"
+        app:cornerRadius="8dp"
+        app:elevation="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/orText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signUpErrorText" />
+
+    <TextView
+        android:id="@+id/orText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:text="@string/or"
+        android:textColor="@color/text_secondary"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/uploadStudentIdText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/manualSubmitButton" />
+
+    <TextView
+        android:id="@+id/uploadStudentIdText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:text="@string/upload_student_id_photo"
+        android:textColor="@color/accent_pink_dark"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/orText" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

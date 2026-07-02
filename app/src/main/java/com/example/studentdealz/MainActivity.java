@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.firestore.ListenerRegistration;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -74,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupDealsList() {
-        allDeals = DealRepository.getAllDeals();
+        allDeals = new ArrayList<>();
 
         RecyclerView dealsRecyclerView = findViewById(R.id.rv);
         dealsRecyclerView.setHasFixedSize(false);

@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.firestore.ListenerRegistration;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CategoryActivity extends AppCompatActivity {
@@ -70,7 +71,7 @@ public class CategoryActivity extends AppCompatActivity {
     }
 
     private void setupDealsList(String categoryName) {
-        categoryDeals = DealRepository.getDealsForCategory(categoryName);
+        categoryDeals = new ArrayList<>();
         emptyState = findViewById(R.id.emptyState);
 
         RecyclerView dealsRecyclerView = findViewById(R.id.rv2);

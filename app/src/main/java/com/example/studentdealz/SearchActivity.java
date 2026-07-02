@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.chip.Chip;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.firestore.ListenerRegistration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +28,7 @@ public class SearchActivity extends AppCompatActivity {
     private DealAdapter dealAdapter;
     private TextInputEditText searchInput;
     private TextView emptyState;
+    private ListenerRegistration dealsListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +52,7 @@ public class SearchActivity extends AppCompatActivity {
         setupSearchInput();
         setupSuggestionChips();
         setupResultsList();
-        loadDeals();
+        listenForDeals();
     }
 
     private void setupBackButton() {
@@ -110,9 +112,14 @@ public class SearchActivity extends AppCompatActivity {
         resultsRecyclerView.setAdapter(dealAdapter);
     }
 
-    private void loadDeals() {
-        allDeals.clear();
-        allDeals.addAll(DealRepository.getCurrentDeals());
+    private void listenForDeals() {
+        dealsListener = DealRepository.listenToAllDeals(this, deals -> {
+            allDeals.clear();
+            allDeals.addAll(deals);
+            filterDeals(searchInput == null || searchInput.getText() == null
+                    ? ""
+                    : searchInput.getText().toString());
+        });
     }
 
     private void filterDeals(String query) {
@@ -129,5 +136,13 @@ public class SearchActivity extends AppCompatActivity {
 
     private void openDealRedemption(Item item) {
         startActivity(DealRedemptionActivity.createIntent(this, item));
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (dealsListener != null) {
+            dealsListener.remove();
+        }
+        super.onDestroy();
     }
 }

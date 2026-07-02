@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/searchScreen"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/screen_background"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
+    tools:context=".SearchActivity">
+
+    <View
+        android:id="@+id/searchHeaderBackground"
+        android:layout_width="0dp"
+        android:layout_height="112dp"
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/searchBackButton"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="28dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/back"
+        android:padding="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_back_arrow"
+        app:tint="@color/accent_pink" />
+
+    <ImageView
+        android:id="@+id/searchLogo"
+        android:layout_width="0dp"
+        android:layout_height="72dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/app_name"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="@+id/searchBackButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/searchBackButton"
+        app:layout_constraintTop_toTopOf="@+id/searchBackButton"
+        app:srcCompat="@drawable/goodlogo" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/dealSearchInputLayout"
+        style="@style/Widget.StudentDealz.LoginInput"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="@string/search_student_deals"
+        app:boxBackgroundColor="@color/card_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchHeaderBackground"
+        app:startIconDrawable="@drawable/ic_search"
+        app:startIconTint="@color/text_secondary">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/dealSearchInput"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:singleLine="true"
+            android:textColor="@color/text_primary"
+            android:textSize="17sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/popularSearchesTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/popular_searches"
+        android:textColor="@color/text_primary"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dealSearchInputLayout" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/popularSearchChips"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:chipSpacingHorizontal="8dp"
+        app:chipSpacingVertical="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/popularSearchesTitle"
+        app:singleLine="false">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipPizza"
+            style="@style/Widget.StudentDealz.SearchChip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pizza" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipCoffee"
+            style="@style/Widget.StudentDealz.SearchChip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Coffee" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipClothes"
+            style="@style/Widget.StudentDealz.SearchChip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Clothes" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipGym"
+            style="@style/Widget.StudentDealz.SearchChip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gym" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipIceCream"
+            style="@style/Widget.StudentDealz.SearchChip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ice Cream" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipLaptop"
+            style="@style/Widget.StudentDealz.SearchChip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Laptop" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipPhone"
+            style="@style/Widget.StudentDealz.SearchChip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Phone" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipRestaurants"
+            style="@style/Widget.StudentDealz.SearchChip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Restaurants" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipAttractions"
+            style="@style/Widget.StudentDealz.SearchChip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Attractions" />
+    </com.google.android.material.chip.ChipGroup>
+
+    <TextView
+        android:id="@+id/searchEmptyState"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="26dp"
+        android:gravity="center"
+        android:text="@string/no_deals_found"
+        android:textColor="@color/text_secondary"
+        android:textSize="18sp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/popularSearchChips" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/searchResultsRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="14dp"
+        android:clipToPadding="false"
+        android:paddingStart="2dp"
+        android:paddingEnd="2dp"
+        android:paddingBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchEmptyState" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,7 +12,20 @@
           "package_name": "com.example.studentdealz"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "744367863086-cfpb2b922no30ghsn24irpaqul63ko82.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.studentdealz",
+            "certificate_hash": "234a495552507867d5ffb8e5205a24b23ccd5573"
+          }
+        },
+        {
+          "client_id": "744367863086-vf1v4eih08htvtn6op6qucn5dm7lvi6s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDgqhYC2zh0AQtPAokDvovBU5n_qjG92bY"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "744367863086-2gbvutekljlb7n8vo1mbec8f3p3vfe8k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

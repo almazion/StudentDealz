@@ -10,6 +10,8 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
+import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.FirebaseNetworkException;
@@ -28,6 +30,7 @@ public class UserRepository {
     private static final String EMPTY_IMAGE_URL = "empty image URL";
     public static final String REGISTRATION_METHOD_MANUAL = "manual";
     public static final String REGISTRATION_METHOD_STUDENT_ID_PHOTO = "student_id_photo";
+    public static final String REGISTRATION_METHOD_GOOGLE = "google";
 
     public static void createAccount(String fullName, String email, String idNumber, String password,
                                      String studentIdImageUri, AuthCallback callback) {
@@ -93,6 +96,31 @@ public class UserRepository {
                     } else {
                         callback.onFailure("Incorrect email or password. Please try again.");
                     }
+                });
+    }
+
+    public static void signInWithGoogle(String idToken, AuthCallback callback) {
+        if (idToken == null || idToken.trim().isEmpty()) {
+            callback.onFailure("Google sign-in did not return a valid account. Please try again.");
+            return;
+        }
+
+        AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
+        FirebaseAuth.getInstance()
+                .signInWithCredential(credential)
+                .addOnCompleteListener(task -> {
+                    if (!task.isSuccessful()) {
+                        callback.onFailure("Google sign-in failed. Please try again.");
+                        return;
+                    }
+
+                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                    if (user == null) {
+                        callback.onFailure("Google sign-in failed. Please try again.");
+                        return;
+                    }
+
+                    saveGoogleStudentProfile(user, callback);
                 });
     }
 
@@ -195,6 +223,38 @@ public class UserRepository {
                             .addOnFailureListener(error ->
                                     callback.onFailure("Account created, but student details were not saved. Please try again."));
                 });
+    }
+
+    private static void saveGoogleStudentProfile(FirebaseUser user, AuthCallback callback) {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection(STUDENTS_COLLECTION)
+                .document(user.getUid())
+                .get()
+                .addOnSuccessListener(document -> {
+                    if (document.exists()) {
+                        callback.onSuccess();
+                        return;
+                    }
+
+                    Student student = new Student(
+                            user.getUid(),
+                            sanitizeSpaces(user.getDisplayName()),
+                            normalizeEmail(user.getEmail()),
+                            "",
+                            "",
+                            EMPTY_IMAGE_URL,
+                            REGISTRATION_METHOD_GOOGLE
+                    );
+
+                    db.collection(STUDENTS_COLLECTION)
+                            .document(user.getUid())
+                            .set(student.getAsMap())
+                            .addOnSuccessListener(unused -> callback.onSuccess())
+                            .addOnFailureListener(error ->
+                                    callback.onFailure("Signed in, but student details were not saved. Please try again."));
+                })
+                .addOnFailureListener(error ->
+                        callback.onFailure("Google sign-in failed. Please try again."));
     }
 
     private static String getCreateAccountErrorMessage(Exception exception) {

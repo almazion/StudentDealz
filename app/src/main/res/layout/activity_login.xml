@@ -135,16 +135,56 @@
         app:backgroundTint="@null"
         app:cornerRadius="8dp"
         app:elevation="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/loginSignUpText"
+        app:layout_constraintBottom_toTopOf="@+id/loginOrText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/loginErrorText" />
 
     <TextView
+        android:id="@+id/loginOrText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:text="@string/or"
+        android:textColor="@color/text_secondary"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/googleSignInButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginSubmitButton" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/googleSignInButton"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="48dp"
+        android:backgroundTint="@color/white"
+        android:text="@string/continue_with_google"
+        android:textAllCaps="false"
+        android:textColor="@color/onboarding_text"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:cornerRadius="8dp"
+        app:elevation="0dp"
+        app:icon="@drawable/ic_google_g"
+        app:iconGravity="textStart"
+        app:iconPadding="12dp"
+        app:iconTint="@null"
+        app:layout_constraintBottom_toTopOf="@+id/loginSignUpText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginOrText"
+        app:strokeColor="@color/google_button_stroke"
+        app:strokeWidth="1dp" />
+
+    <TextView
         android:id="@+id/loginSignUpText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="28dp"
         android:clickable="true"
         android:focusable="true"
         android:gravity="center"
@@ -155,5 +195,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginSubmitButton" />
+        app:layout_constraintTop_toBottomOf="@+id/googleSignInButton" />
 </androidx.constraintlayout.widget.ConstraintLayout>

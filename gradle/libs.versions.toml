@@ -16,6 +16,7 @@ googleFirebaseCrashlytics = "3.0.7"
 firebaseFirestore = "26.3.0"
 firebaseAuth = "24.1.0"
 mlkitTextRecognition = "16.0.1"
+playServicesAuth = "21.2.0"
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -32,6 +33,7 @@ firebase-crashlytics = { group = "com.google.firebase", name = "firebase-crashly
 firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore", version.ref = "firebaseFirestore" }
 firebase-auth = { group = "com.google.firebase", name = "firebase-auth", version.ref = "firebaseAuth" }
 mlkit-text-recognition = { group = "com.google.mlkit", name = "text-recognition", version.ref = "mlkitTextRecognition" }
+play-services-auth = { group = "com.google.android.gms", name = "play-services-auth", version.ref = "playServicesAuth" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

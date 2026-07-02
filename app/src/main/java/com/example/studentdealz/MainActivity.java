@@ -2,7 +2,6 @@ package com.example.studentdealz;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.SearchView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
 
     private List<Item> allDeals;
     private DealAdapter dealAdapter;
-    private SearchView searchView;
     private ListenerRegistration dealsListener;
 
     @Override
@@ -82,36 +80,25 @@ public class MainActivity extends AppCompatActivity {
         dealsRecyclerView.setHasFixedSize(false);
         dealsRecyclerView.setLayoutManager(new GridLayoutManager(this, 1));
 
-        dealAdapter = new DealAdapter(allDeals);
+        dealAdapter = new DealAdapter(allDeals, this::openDealRedemption);
         dealsRecyclerView.setAdapter(dealAdapter);
 
         dealsListener = DealRepository.listenToAllDeals(this, deals -> {
             allDeals = deals;
-            filterDeals(searchView == null ? "" : searchView.getQuery().toString());
+            dealAdapter.setItems(allDeals);
         });
     }
 
     private void setupSearch() {
-        searchView = findViewById(R.id.search);
-        searchView.setQueryHint("Search deals");
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                filterDeals(query);
-                searchView.clearFocus();
-                return true;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                filterDeals(newText);
-                return true;
-            }
-        });
+        findViewById(R.id.search).setOnClickListener(view -> openSearchScreen());
     }
 
-    private void filterDeals(String query) {
-        dealAdapter.setItems(DealRepository.filterDeals(allDeals, query));
+    private void openSearchScreen() {
+        startActivity(new Intent(MainActivity.this, SearchActivity.class));
+    }
+
+    private void openDealRedemption(Item item) {
+        startActivity(DealRedemptionActivity.createIntent(this, item));
     }
 
     @Override

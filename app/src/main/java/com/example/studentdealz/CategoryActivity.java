@@ -77,7 +77,7 @@ public class CategoryActivity extends AppCompatActivity {
         dealsRecyclerView.setHasFixedSize(false);
         dealsRecyclerView.setLayoutManager(new GridLayoutManager(this, 1));
 
-        dealAdapter = new DealAdapter(categoryDeals);
+        dealAdapter = new DealAdapter(categoryDeals, this::openDealRedemption);
         dealsRecyclerView.setAdapter(dealAdapter);
         updateEmptyState(categoryDeals);
 
@@ -118,6 +118,10 @@ public class CategoryActivity extends AppCompatActivity {
         } else {
             emptyState.setVisibility(View.GONE);
         }
+    }
+
+    private void openDealRedemption(Item item) {
+        startActivity(DealRedemptionActivity.createIntent(this, item));
     }
 
     @Override

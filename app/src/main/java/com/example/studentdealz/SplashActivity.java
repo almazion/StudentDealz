@@ -1,9 +1,12 @@
 package com.example.studentdealz;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.view.Window;
+import android.view.WindowInsetsController;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +19,7 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
+        applyWhiteSystemBars();
         setContentView(R.layout.activity_splash);
 
         new Handler(Looper.getMainLooper()).postDelayed(() -> {
@@ -26,5 +30,18 @@ public class SplashActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         }, SPLASH_DELAY_MILLIS);
+    }
+
+    private void applyWhiteSystemBars() {
+        Window window = getWindow();
+        window.setStatusBarColor(Color.WHITE);
+        window.setNavigationBarColor(Color.WHITE);
+
+        WindowInsetsController controller = window.getInsetsController();
+        if (controller != null) {
+            int lightBars = WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS
+                    | WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS;
+            controller.setSystemBarsAppearance(lightBars, lightBars);
+        }
     }
 }

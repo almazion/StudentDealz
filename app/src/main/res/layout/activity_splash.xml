@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/onboarding_background"
+    android:background="@color/splash_background"
     android:paddingStart="32dp"
     android:paddingEnd="32dp"
     tools:context=".SplashActivity">

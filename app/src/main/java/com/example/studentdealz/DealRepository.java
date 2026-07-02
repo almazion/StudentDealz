@@ -23,6 +23,7 @@ public class DealRepository {
     }
 
     private static final String DEALS_COLLECTION = "Deals";
+    private static List<Item> cachedDeals;
 
     public static final String CATEGORY_FOOD = "Food";
     public static final String CATEGORY_CLOTHING = "Clothing";
@@ -43,23 +44,45 @@ public class DealRepository {
     public static List<Item> getAllDeals() {
         List<Item> items = new ArrayList<>();
 
-        items.add(new Item(R.drawable.item1, "15%", "GOLDA", CATEGORY_FOOD));
-        items.add(new Item(R.drawable.item5, "12%", "Alo", CATEGORY_CLOTHING));
-        items.add(new Item(R.drawable.item4, "18%", "iDigital", CATEGORY_ELECTRONICS));
-        items.add(new Item(R.drawable.item3, "10%", "KING KONG", CATEGORY_FOOD));
-        items.add(new Item(R.drawable.item13, "22%", "Zara", CATEGORY_CLOTHING));
-        items.add(new Item(R.drawable.item6, "50%", "ChatGPT", CATEGORY_OFFICE));
-        items.add(new Item(R.drawable.item7, "23%", "Pizza Hut", CATEGORY_FOOD));
-        items.add(new Item(R.drawable.item8, "18%", "Japanika", CATEGORY_FOOD));
-        items.add(new Item(R.drawable.item9, "16%", "BBB", CATEGORY_FOOD));
-        items.add(new Item(R.drawable.item2, "25%", "YES PLANET", CATEGORY_ATTRACTIONS));
-        items.add(new Item(R.drawable.item10, "17%", "Student Escape Room", CATEGORY_ATTRACTIONS));
-        items.add(new Item(R.drawable.item11, "30%", "Study Supplies", CATEGORY_OFFICE));
-        items.add(new Item(R.drawable.item12, "55%", "Gemini", CATEGORY_OFFICE));
+        items.add(new Item(R.drawable.item1, "golda-15", "GOLDA Student Discount", "15%", "GOLDA",
+                CATEGORY_FOOD, "item1", "ice cream coffee dessert restaurant restaurants", "", ""));
+        items.add(new Item(R.drawable.item5, "alo-12", "Alo Student Discount", "12%", "Alo",
+                CATEGORY_CLOTHING, "item5", "clothes clothing fashion activewear", "", ""));
+        items.add(new Item(R.drawable.item4, "idigital-18", "iDigital Student Discount", "18%",
+                "iDigital", CATEGORY_ELECTRONICS, "item4", "phone laptop computer apple electronics",
+                "", ""));
+        items.add(new Item(R.drawable.item3, "kingkong-10", "KING KONG Student Discount", "10%",
+                "KING KONG", CATEGORY_FOOD, "item3", "burger burgers restaurant restaurants", "", ""));
+        items.add(new Item(R.drawable.item13, "zara-22", "Zara Student Discount", "22%", "Zara",
+                CATEGORY_CLOTHING, "item13", "clothes clothing fashion", "", ""));
+        items.add(new Item(R.drawable.item6, "chatgpt-50", "ChatGPT Student Discount", "50%",
+                "ChatGPT", CATEGORY_OFFICE, "item6", "study software ai office", "", ""));
+        items.add(new Item(R.drawable.item7, "pizzahut-23", "Pizza Hut Student Discount", "23%",
+                "Pizza Hut", CATEGORY_FOOD, "item7", "pizza restaurant restaurants", "", ""));
+        items.add(new Item(R.drawable.item8, "japanika-18", "Japanika Student Discount", "18%",
+                "Japanika", CATEGORY_FOOD, "item8", "sushi restaurant restaurants", "", ""));
+        items.add(new Item(R.drawable.item9, "bbb-16", "BBB Student Discount", "16%", "BBB",
+                CATEGORY_FOOD, "item9", "burger burgers restaurant restaurants", "", ""));
+        items.add(new Item(R.drawable.item2, "yesplanet-25", "YES PLANET Student Discount", "25%",
+                "YES PLANET", CATEGORY_ATTRACTIONS, "item2", "cinema movie movies attractions", "", ""));
+        items.add(new Item(R.drawable.item10, "escaperoom-17", "Student Escape Room Discount", "17%",
+                "Student Escape Room", CATEGORY_ATTRACTIONS, "item10", "escape room attractions", "", ""));
+        items.add(new Item(R.drawable.item11, "studysupplies-30", "Study Supplies Student Discount",
+                "30%", "Study Supplies", CATEGORY_OFFICE, "item11", "study school office stationery",
+                "", ""));
+        items.add(new Item(R.drawable.item12, "gemini-55", "Gemini Student Discount", "55%",
+                "Gemini", CATEGORY_OFFICE, "item12", "study software ai office", "", ""));
 
 
 
         return items;
+    }
+
+    public static List<Item> getCurrentDeals() {
+        if (cachedDeals == null || cachedDeals.isEmpty()) {
+            cachedDeals = new ArrayList<>(getAllDeals());
+        }
+        return new ArrayList<>(cachedDeals);
     }
 
     public static ListenerRegistration listenToAllDeals(Context context, DealsCallback callback) {
@@ -101,12 +124,16 @@ public class DealRepository {
         return (value, error) -> {
             if (error != null) {
                 Log.e(TAG, "Could not listen to Deals collection.", error);
-                callback.onDealsLoaded(getFallbackDeals(fallbackCategory));
+                List<Item> fallbackDeals = getFallbackDeals(fallbackCategory);
+                updateCache(fallbackDeals, fallbackCategory);
+                callback.onDealsLoaded(fallbackDeals);
                 return;
             }
 
             if (value == null || value.isEmpty()) {
-                callback.onDealsLoaded(getFallbackDeals(fallbackCategory));
+                List<Item> fallbackDeals = getFallbackDeals(fallbackCategory);
+                updateCache(fallbackDeals, fallbackCategory);
+                callback.onDealsLoaded(fallbackDeals);
                 return;
             }
 
@@ -119,25 +146,48 @@ public class DealRepository {
             }
 
             if (deals.isEmpty()) {
-                callback.onDealsLoaded(getFallbackDeals(fallbackCategory));
+                List<Item> fallbackDeals = getFallbackDeals(fallbackCategory);
+                updateCache(fallbackDeals, fallbackCategory);
+                callback.onDealsLoaded(fallbackDeals);
             } else {
+                updateCache(deals, fallbackCategory);
                 callback.onDealsLoaded(deals);
             }
         };
     }
 
     private static Item createItemFromDocument(Context context, DocumentSnapshot document) {
-        String discount = document.getString("discount");
-        String partner = document.getString("partner");
+        String dealId = firstNonBlank(document.getString("dealId"), document.getId());
+        String title = document.getString("title");
+        String discount = firstNonBlank(document.getString("discountText"), document.getString("discount"));
+        String partner = firstNonBlank(document.getString("storeName"), document.getString("partner"));
         String category = document.getString("category");
         String imageName = document.getString("imageName");
+        String keywords = document.getString("keywords");
+        String barcodeValue = firstNonBlank(
+                document.getString("barcodeValue"),
+                document.getString("discountCode"),
+                document.getString("code")
+        );
+        String expirationDate = document.getString("expirationDate");
 
         if (discount == null || partner == null || category == null) {
             return null;
         }
 
         int imageResId = resolveDrawable(context, imageName);
-        return new Item(imageResId, discount, partner, category, imageName == null ? "" : imageName);
+        return new Item(
+                imageResId,
+                dealId,
+                title,
+                discount,
+                partner,
+                category,
+                imageName == null ? "" : imageName,
+                keywords == null ? "" : keywords,
+                barcodeValue,
+                expirationDate == null ? "" : expirationDate
+        );
     }
 
     private static int resolveDrawable(Context context, String imageName) {
@@ -158,5 +208,20 @@ public class DealRepository {
             return getAllDeals();
         }
         return getDealsForCategory(category);
+    }
+
+    private static void updateCache(List<Item> deals, String category) {
+        if (category == null || category.trim().isEmpty()) {
+            cachedDeals = new ArrayList<>(deals);
+        }
+    }
+
+    private static String firstNonBlank(String... values) {
+        for (String value : values) {
+            if (value != null && !value.trim().isEmpty()) {
+                return value.trim();
+            }
+        }
+        return "";
     }
 }

@@ -12,9 +12,19 @@ import java.util.List;
 
 public class DealAdapter extends RecyclerView.Adapter<ItemDealViewHolder> {
 
+    public interface OnDealClickListener {
+        void onDealClick(Item item);
+    }
+
     private final List<Item> items = new ArrayList<>();
+    private final OnDealClickListener onDealClickListener;
 
     public DealAdapter(List<Item> initialItems) {
+        this(initialItems, null);
+    }
+
+    public DealAdapter(List<Item> initialItems, OnDealClickListener onDealClickListener) {
+        this.onDealClickListener = onDealClickListener;
         setItems(initialItems);
     }
 
@@ -32,6 +42,11 @@ public class DealAdapter extends RecyclerView.Adapter<ItemDealViewHolder> {
         holder.discount.setText(item.getDiscount());
         holder.partner.setText(item.getPartner());
         holder.category.setText(item.getCategory());
+        holder.itemView.setOnClickListener(view -> {
+            if (onDealClickListener != null) {
+                onDealClickListener.onDealClick(item);
+            }
+        });
     }
 
     @Override

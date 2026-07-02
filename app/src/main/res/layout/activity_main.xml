@@ -32,16 +32,19 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/goodlogo" />
 
-    <SearchView
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/search"
+        style="@style/Widget.Material3.Button.IconButton"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="8dp"
-        android:background="@drawable/search_background"
-        android:iconifiedByDefault="true"
-        android:paddingStart="8dp"
-        android:paddingEnd="8dp"
+        android:contentDescription="@string/search"
+        app:backgroundTint="@color/accent_pink_light"
+        app:icon="@drawable/ic_search"
+        app:iconGravity="textStart"
+        app:iconPadding="0dp"
+        app:iconTint="@color/text_primary"
         app:layout_constraintEnd_toStartOf="@+id/logoutButton"
         app:layout_constraintStart_toEndOf="@+id/logo"
         app:layout_constraintTop_toTopOf="parent" />

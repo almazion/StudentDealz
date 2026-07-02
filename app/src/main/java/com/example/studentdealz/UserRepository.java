@@ -12,6 +12,7 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.FirebaseNetworkException;
@@ -31,6 +32,7 @@ public class UserRepository {
     public static final String REGISTRATION_METHOD_MANUAL = "manual";
     public static final String REGISTRATION_METHOD_STUDENT_ID_PHOTO = "student_id_photo";
     public static final String REGISTRATION_METHOD_GOOGLE = "google";
+    public static final String REGISTRATION_METHOD_PHONE = "phone";
 
     public static void createAccount(String fullName, String email, String idNumber, String password,
                                      String studentIdImageUri, AuthCallback callback) {
@@ -121,6 +123,30 @@ public class UserRepository {
                     }
 
                     saveGoogleStudentProfile(user, callback);
+                });
+    }
+
+    public static void signInWithPhoneCredential(PhoneAuthCredential credential, AuthCallback callback) {
+        if (credential == null) {
+            callback.onFailure("Phone verification failed. Please try again.");
+            return;
+        }
+
+        FirebaseAuth.getInstance()
+                .signInWithCredential(credential)
+                .addOnCompleteListener(task -> {
+                    if (!task.isSuccessful()) {
+                        callback.onFailure("Incorrect verification code. Please try again.");
+                        return;
+                    }
+
+                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                    if (user == null) {
+                        callback.onFailure("Phone sign-in failed. Please try again.");
+                        return;
+                    }
+
+                    savePhoneStudentProfile(user, callback);
                 });
     }
 
@@ -255,6 +281,38 @@ public class UserRepository {
                 })
                 .addOnFailureListener(error ->
                         callback.onFailure("Google sign-in failed. Please try again."));
+    }
+
+    private static void savePhoneStudentProfile(FirebaseUser user, AuthCallback callback) {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection(STUDENTS_COLLECTION)
+                .document(user.getUid())
+                .get()
+                .addOnSuccessListener(document -> {
+                    if (document.exists()) {
+                        callback.onSuccess();
+                        return;
+                    }
+
+                    Student student = new Student(
+                            user.getUid(),
+                            "",
+                            "",
+                            "",
+                            "",
+                            EMPTY_IMAGE_URL,
+                            REGISTRATION_METHOD_PHONE
+                    );
+
+                    db.collection(STUDENTS_COLLECTION)
+                            .document(user.getUid())
+                            .set(student.getAsMap())
+                            .addOnSuccessListener(unused -> callback.onSuccess())
+                            .addOnFailureListener(error ->
+                                    callback.onFailure("Signed in, but student details were not saved. Please try again."));
+                })
+                .addOnFailureListener(error ->
+                        callback.onFailure("Phone sign-in failed. Please try again."));
     }
 
     private static String getCreateAccountErrorMessage(Exception exception) {

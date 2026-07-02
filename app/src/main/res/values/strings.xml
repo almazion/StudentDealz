@@ -24,6 +24,16 @@
     <string name="password">Password</string>
     <string name="dont_have_account_signup">Don’t have an account? Sign Up</string>
     <string name="continue_with_google">Continue with Google</string>
+    <string name="continue_with_phone">Continue with Phone</string>
+    <string name="phone_sign_in_title">Phone Sign In</string>
+    <string name="phone_sign_in_subtitle">Enter your phone number and we’ll send a verification code.</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="phone_number_hint">+972501234567</string>
+    <string name="send_code">Send Code</string>
+    <string name="verification_code">Verification Code</string>
+    <string name="verification_code_hint">123456</string>
+    <string name="verify_code">Verify Code</string>
+    <string name="phone_code_sent">Code sent. Check your SMS messages.</string>
     <string name="signup_title">Sign up</string>
     <string name="manual_signup">Manual Sign-Up</string>
     <string name="student_id_photo">Student ID Photo</string>

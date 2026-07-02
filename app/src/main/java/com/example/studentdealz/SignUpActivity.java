@@ -24,6 +24,7 @@ public class SignUpActivity extends AppCompatActivity {
     private MaterialButton manualSignUpButton;
     private MaterialButton studentIdPhotoButton;
     private MaterialButton googleSignUpButton;
+    private MaterialButton phoneSignUpButton;
     private GoogleSignInClient googleSignInClient;
     private ActivityResultLauncher<Intent> googleSignInLauncher;
 
@@ -39,11 +40,13 @@ public class SignUpActivity extends AppCompatActivity {
         manualSignUpButton = findViewById(R.id.manualSignUpButton);
         studentIdPhotoButton = findViewById(R.id.studentIdPhotoButton);
         googleSignUpButton = findViewById(R.id.signUpGoogleButton);
+        phoneSignUpButton = findViewById(R.id.signUpPhoneButton);
 
         backButton.setOnClickListener(view -> goBackToStart());
         manualSignUpButton.setOnClickListener(view -> openManualSignUp());
         studentIdPhotoButton.setOnClickListener(view -> openStudentIdPhoto());
         googleSignUpButton.setOnClickListener(view -> startGoogleSignIn());
+        phoneSignUpButton.setOnClickListener(view -> openPhoneAuthScreen());
 
         getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
             @Override
@@ -73,6 +76,11 @@ public class SignUpActivity extends AppCompatActivity {
 
     private void openStudentIdPhoto() {
         Intent intent = new Intent(SignUpActivity.this, StudentIdPhotoActivity.class);
+        startActivity(intent);
+    }
+
+    private void openPhoneAuthScreen() {
+        Intent intent = new Intent(SignUpActivity.this, PhoneAuthActivity.class);
         startActivity(intent);
     }
 
@@ -122,6 +130,7 @@ public class SignUpActivity extends AppCompatActivity {
         manualSignUpButton.setEnabled(!isLoading);
         studentIdPhotoButton.setEnabled(!isLoading);
         googleSignUpButton.setEnabled(!isLoading);
+        phoneSignUpButton.setEnabled(!isLoading);
         googleSignUpButton.setText(isLoading ? "Connecting..." : getString(R.string.continue_with_google));
     }
 }

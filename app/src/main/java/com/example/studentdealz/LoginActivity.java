@@ -30,6 +30,7 @@ public class LoginActivity extends AppCompatActivity {
     private TextView loginErrorText;
     private MaterialButton loginSubmitButton;
     private MaterialButton googleSignInButton;
+    private MaterialButton phoneSignInButton;
     private GoogleSignInClient googleSignInClient;
     private ActivityResultLauncher<Intent> googleSignInLauncher;
 
@@ -50,11 +51,13 @@ public class LoginActivity extends AppCompatActivity {
         ImageButton backButton = findViewById(R.id.loginBackButton);
         loginSubmitButton = findViewById(R.id.loginSubmitButton);
         googleSignInButton = findViewById(R.id.googleSignInButton);
+        phoneSignInButton = findViewById(R.id.phoneSignInButton);
         TextView signUpText = findViewById(R.id.loginSignUpText);
 
         backButton.setOnClickListener(view -> goBackToStart());
         loginSubmitButton.setOnClickListener(view -> validateLogin());
         googleSignInButton.setOnClickListener(view -> startGoogleSignIn());
+        phoneSignInButton.setOnClickListener(view -> openPhoneAuthScreen());
         signUpText.setOnClickListener(view -> openSignUpScreen());
 
         getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
@@ -169,6 +172,11 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    private void openPhoneAuthScreen() {
+        Intent intent = new Intent(LoginActivity.this, PhoneAuthActivity.class);
+        startActivity(intent);
+    }
+
     private void openHomeScreen() {
         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
         startActivity(intent);
@@ -186,6 +194,7 @@ public class LoginActivity extends AppCompatActivity {
     private void setLoading(boolean isLoading) {
         loginSubmitButton.setEnabled(!isLoading);
         googleSignInButton.setEnabled(!isLoading);
+        phoneSignInButton.setEnabled(!isLoading);
         loginSubmitButton.setText(isLoading ? "Logging in..." : "Log In");
         googleSignInButton.setText(isLoading ? "Connecting..." : getString(R.string.continue_with_google));
     }

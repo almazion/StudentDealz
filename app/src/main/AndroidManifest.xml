@@ -38,6 +38,9 @@
             android:name=".LoginActivity"
             android:exported="false" />
         <activity
+            android:name=".PhoneAuthActivity"
+            android:exported="false" />
+        <activity
             android:name=".StartActivity"
             android:exported="false" />
         <activity

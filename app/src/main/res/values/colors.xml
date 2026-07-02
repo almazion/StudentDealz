@@ -12,7 +12,7 @@
     <color name="text_primary">#212121</color>
     <color name="text_secondary">#6D5F66</color>
     <color name="splash_background">#FFFFFF</color>
-    <color name="onboarding_background">#FAFAFB</color>
+    <color name="onboarding_background">#FFFFFF</color>
     <color name="onboarding_text">#050505</color>
     <color name="login_purple">#8E2AA0</color>
     <color name="student_id_red">#8F2344</color>

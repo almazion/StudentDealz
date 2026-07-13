@@ -105,6 +105,7 @@ public class ValidationUtils {
     }
 
     private static boolean isValidIsraeliId(String idNumber) {
+        // Israeli ID validation uses alternating weights and must end with a checksum divisible by 10.
         int sum = 0;
         for (int i = 0; i < idNumber.length(); i++) {
             int digit = Character.getNumericValue(idNumber.charAt(i));

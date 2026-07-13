@@ -69,7 +69,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Categories"
+        android:text="@string/categories"
         android:textColor="@color/text_primary"
         android:textSize="26sp"
         android:textStyle="bold"
@@ -100,7 +100,7 @@
                 android:layout_height="56dp"
                 android:layout_marginEnd="4dp"
                 android:layout_weight="1"
-                android:text="Food"
+                android:text="@string/category_food"
                 android:textSize="14sp" />
 
             <com.google.android.material.button.MaterialButton
@@ -111,7 +111,7 @@
                 android:layout_marginStart="4dp"
                 android:layout_marginEnd="4dp"
                 android:layout_weight="1"
-                android:text="Clothing"
+                android:text="@string/category_clothing"
                 android:textSize="14sp" />
 
             <com.google.android.material.button.MaterialButton
@@ -121,7 +121,7 @@
                 android:layout_height="56dp"
                 android:layout_marginStart="4dp"
                 android:layout_weight="1"
-                android:text="Attractions"
+                android:text="@string/category_attractions"
                 android:textSize="14sp" />
         </LinearLayout>
 
@@ -139,7 +139,7 @@
                 android:layout_height="56dp"
                 android:layout_marginEnd="4dp"
                 android:layout_weight="1"
-                android:text="Office"
+                android:text="@string/category_office"
                 android:textSize="14sp" />
 
             <com.google.android.material.button.MaterialButton
@@ -149,7 +149,7 @@
                 android:layout_height="56dp"
                 android:layout_marginStart="4dp"
                 android:layout_weight="1"
-                android:text="Electronics"
+                android:text="@string/category_electronics"
                 android:textSize="14sp" />
         </LinearLayout>
     </LinearLayout>
@@ -159,7 +159,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="This Week's Deals"
+        android:text="@string/this_weeks_deals"
         android:textColor="@color/text_primary"
         android:textSize="26sp"
         android:textStyle="bold"

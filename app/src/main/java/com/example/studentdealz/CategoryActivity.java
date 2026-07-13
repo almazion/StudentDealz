@@ -62,7 +62,7 @@ public class CategoryActivity extends AppCompatActivity {
         TextView title = findViewById(R.id.categories4);
         TextView subtitle = findViewById(R.id.categories);
         title.setText(categoryName);
-        subtitle.setText("Student deals in " + categoryName);
+        subtitle.setText(getString(R.string.category_subtitle, categoryName));
     }
 
     private void setupBackButton() {
@@ -90,7 +90,7 @@ public class CategoryActivity extends AppCompatActivity {
 
     private void setupSearch() {
         searchView = findViewById(R.id.categorySearch);
-        searchView.setQueryHint("Search in category");
+        searchView.setQueryHint(getString(R.string.search_in_category));
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {

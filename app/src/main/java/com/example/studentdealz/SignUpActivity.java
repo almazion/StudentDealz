@@ -108,7 +108,7 @@ public class SignUpActivity extends AppCompatActivity {
             });
         } catch (ApiException exception) {
             setLoading(false);
-            Toast.makeText(this, "Google sign-up was cancelled. Please try again.", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.google_sign_up_cancelled, Toast.LENGTH_LONG).show();
         }
     }
 
@@ -131,6 +131,6 @@ public class SignUpActivity extends AppCompatActivity {
         studentIdPhotoButton.setEnabled(!isLoading);
         googleSignUpButton.setEnabled(!isLoading);
         phoneSignUpButton.setEnabled(!isLoading);
-        googleSignUpButton.setText(isLoading ? "Connecting..." : getString(R.string.continue_with_google));
+        googleSignUpButton.setText(isLoading ? getString(R.string.connecting) : getString(R.string.continue_with_google));
     }
 }

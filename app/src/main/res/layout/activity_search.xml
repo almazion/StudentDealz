@@ -105,63 +105,63 @@
             style="@style/Widget.StudentDealz.SearchChip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Pizza" />
+            android:text="@string/search_pizza" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chipCoffee"
             style="@style/Widget.StudentDealz.SearchChip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Coffee" />
+            android:text="@string/search_coffee" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chipClothes"
             style="@style/Widget.StudentDealz.SearchChip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Clothes" />
+            android:text="@string/search_clothes" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chipGym"
             style="@style/Widget.StudentDealz.SearchChip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Gym" />
+            android:text="@string/search_gym" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chipIceCream"
             style="@style/Widget.StudentDealz.SearchChip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ice Cream" />
+            android:text="@string/search_ice_cream" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chipLaptop"
             style="@style/Widget.StudentDealz.SearchChip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Laptop" />
+            android:text="@string/search_laptop" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chipPhone"
             style="@style/Widget.StudentDealz.SearchChip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Phone" />
+            android:text="@string/search_phone" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chipRestaurants"
             style="@style/Widget.StudentDealz.SearchChip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Restaurants" />
+            android:text="@string/search_restaurants" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chipAttractions"
             style="@style/Widget.StudentDealz.SearchChip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Attractions" />
+            android:text="@string/category_attractions" />
     </com.google.android.material.chip.ChipGroup>
 
     <TextView

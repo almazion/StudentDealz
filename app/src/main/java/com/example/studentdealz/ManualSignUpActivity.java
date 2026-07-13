@@ -103,7 +103,7 @@ public class ManualSignUpActivity extends AppCompatActivity {
         }
 
         if (hasError) {
-            signUpErrorText.setText("Please fix the highlighted fields.");
+            signUpErrorText.setText(R.string.please_fix_highlighted_fields);
             return;
         }
 
@@ -170,6 +170,6 @@ public class ManualSignUpActivity extends AppCompatActivity {
 
     private void setLoading(boolean isLoading) {
         signUpButton.setEnabled(!isLoading);
-        signUpButton.setText(isLoading ? "Creating account..." : "Sign Up");
+        signUpButton.setText(isLoading ? getString(R.string.creating_account) : getString(R.string.sign_up));
     }
 }

@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
             );
             return insets;
         });
+        // Analytics is required for the final project and starts collecting after initialization.
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         setupLogoutButton();

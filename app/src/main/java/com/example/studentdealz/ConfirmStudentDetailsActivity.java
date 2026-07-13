@@ -117,13 +117,13 @@ public class ConfirmStudentDetailsActivity extends AppCompatActivity {
         }
 
         if (studentIdImageUri == null || studentIdImageUri.trim().isEmpty()) {
-            confirmErrorText.setText("Student ID photo is missing. Please upload or take the photo again.");
+            confirmErrorText.setText(R.string.student_id_photo_missing);
             hasError = true;
         }
 
         if (hasError) {
             if (confirmErrorText.getText().toString().isEmpty()) {
-                confirmErrorText.setText("Please fix the highlighted fields.");
+                confirmErrorText.setText(R.string.please_fix_highlighted_fields);
             }
             return;
         }
@@ -178,6 +178,6 @@ public class ConfirmStudentDetailsActivity extends AppCompatActivity {
 
     private void setLoading(boolean isLoading) {
         createAccountButton.setEnabled(!isLoading);
-        createAccountButton.setText(isLoading ? "Creating account..." : "Create Account");
+        createAccountButton.setText(isLoading ? getString(R.string.creating_account) : getString(R.string.create_account));
     }
 }

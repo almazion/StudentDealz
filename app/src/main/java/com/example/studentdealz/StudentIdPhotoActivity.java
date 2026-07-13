@@ -132,7 +132,7 @@ public class StudentIdPhotoActivity extends AppCompatActivity {
         try {
             uploadPhotoLauncher.launch(intent);
         } catch (ActivityNotFoundException e) {
-            photoErrorText.setText("No file picker found. Please try taking a photo instead.");
+            photoErrorText.setText(R.string.no_file_picker_found);
         }
     }
 
@@ -148,7 +148,7 @@ public class StudentIdPhotoActivity extends AppCompatActivity {
     private void captureImage() {
         Uri imageUri = createImageUri();
         if (imageUri == null) {
-            photoErrorText.setText("Could not prepare the camera. Please upload a photo instead.");
+            photoErrorText.setText(R.string.camera_prepare_failed);
             return;
         }
 
@@ -156,14 +156,14 @@ public class StudentIdPhotoActivity extends AppCompatActivity {
         try {
             takePictureLauncher.launch(imageUri);
         } catch (ActivityNotFoundException e) {
-            photoErrorText.setText("No camera app found. Please upload a photo instead.");
+            photoErrorText.setText(R.string.no_camera_app_found);
         }
     }
 
     private Uri createImageUri() {
         ContentValues values = new ContentValues();
-        values.put(MediaStore.Images.Media.TITLE, "Student ID Photo");
-        values.put(MediaStore.Images.Media.DESCRIPTION, "StudentDealz student ID verification photo");
+        values.put(MediaStore.Images.Media.TITLE, getString(R.string.student_id_photo_title));
+        values.put(MediaStore.Images.Media.DESCRIPTION, getString(R.string.student_id_photo_description));
         return getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
     }
 
@@ -174,7 +174,7 @@ public class StudentIdPhotoActivity extends AppCompatActivity {
 
     private void runTextRecognition(Uri imageUri) {
         photoErrorText.setText("");
-        photoStatusText.setText("Reading student ID details...");
+        photoStatusText.setText(R.string.reading_student_id);
         setButtonsEnabled(false);
 
         InputImage image;
@@ -190,6 +190,7 @@ public class StudentIdPhotoActivity extends AppCompatActivity {
                 .process(image)
                 .addOnSuccessListener(visionText -> {
                     setButtonsEnabled(true);
+                    // OCR text is noisy, so parsing happens in a small helper before the user confirms the details.
                     StudentIdOcrParser.ExtractedDetails details =
                             StudentIdOcrParser.parse(visionText.getText());
 
@@ -210,32 +211,32 @@ public class StudentIdPhotoActivity extends AppCompatActivity {
         String savedUri = UserRepository.getPendingStudentIdUri(this);
         if (savedUri.isEmpty()) {
             showPlaceholderIcon();
-            photoStatusText.setText("No student ID photo selected yet");
+            photoStatusText.setText(R.string.no_student_id_photo_selected);
         } else {
             photoErrorText.setText("");
-            photoStatusText.setText("Student ID photo selected");
+            photoStatusText.setText(R.string.student_id_photo_selected);
             showSelectedImage(savedUri);
         }
     }
 
     private void showPickerCancelledMessage() {
-        photoErrorText.setText("No photo selected yet. You can upload a photo or go back.");
+        photoErrorText.setText(R.string.no_photo_selected);
         updateSelectedPhotoStatus();
     }
 
     private void showCameraPermissionDeniedMessage() {
-        photoErrorText.setText("Camera permission is required to take a photo.");
+        photoErrorText.setText(R.string.camera_permission_required);
         updateSelectedPhotoStatus();
     }
 
     private void showCameraPermissionPermanentlyDeniedMessage() {
-        photoErrorText.setText("Camera permission is required. You can enable it in device settings.");
+        photoErrorText.setText(R.string.camera_permission_settings);
         updateSelectedPhotoStatus();
     }
 
     private void showOcrFailureMessage() {
-        photoStatusText.setText("Student ID photo selected");
-        photoErrorText.setText("We couldn’t read the details clearly. Please upload a clearer photo or sign up manually.");
+        photoStatusText.setText(R.string.student_id_photo_selected);
+        photoErrorText.setText(R.string.ocr_failure_message);
     }
 
     private void showSelectedImage(String imageUri) {

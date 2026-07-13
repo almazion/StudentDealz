@@ -58,11 +58,11 @@ public class DealRedemptionActivity extends AppCompatActivity {
             return insets;
         });
 
-        setupBackButton();
+        setupButtons();
         bindDeal();
     }
 
-    private void setupBackButton() {
+    private void setupButtons() {
         ImageButton backButton = findViewById(R.id.redemptionBackButton);
         backButton.setOnClickListener(view -> finish());
         findViewById(R.id.copyCodeButton).setOnClickListener(view -> copyCode());
@@ -90,8 +90,8 @@ public class DealRedemptionActivity extends AppCompatActivity {
 
         logo.setImageResource(R.drawable.goodlogo);
         dealImage.setImageResource(imageResId);
-        titleText.setText(isBlank(title) ? "Student Discount" : title);
-        discountText.setText(discount == null ? "" : discount + " OFF");
+        titleText.setText(isBlank(title) ? getString(R.string.student_discount) : title);
+        discountText.setText(discount == null ? "" : getString(R.string.discount_off, discount));
         partnerText.setText(partner == null ? "" : partner);
         categoryText.setText(category == null ? "" : category);
         barcodeValue = isBlank(barcodeValue) ? createBarcodeText(partner, discount) : barcodeValue;

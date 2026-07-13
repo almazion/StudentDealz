@@ -74,6 +74,7 @@ public class StudentIdOcrParser {
     }
 
     private static String extractFullName(List<String> lines) {
+        // Prefer a name printed after a label, then fall back to the first realistic-looking line.
         for (int i = 0; i < lines.size(); i++) {
             String line = lines.get(i);
             if (isNameLabel(line) && i + 1 < lines.size()) {
@@ -118,6 +119,7 @@ public class StudentIdOcrParser {
 
     private static boolean looksLikeInstitution(String line) {
         String lowerLine = line.toLowerCase(Locale.ROOT);
+        // Student IDs use many institution formats, so this list keeps the OCR guess conservative.
         return lowerLine.contains("university")
                 || lowerLine.contains("college")
                 || lowerLine.contains("institute")

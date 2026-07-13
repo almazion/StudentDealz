@@ -89,7 +89,7 @@ public class LoginActivity extends AppCompatActivity {
         boolean hasError = false;
 
         if (email.isEmpty()) {
-            emailInputLayout.setError("Email is required");
+            emailInputLayout.setError(getString(R.string.email_required));
             hasError = true;
         } else {
             String emailError = ValidationUtils.validateEmail(email);
@@ -100,12 +100,12 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         if (password.isEmpty()) {
-            passwordInputLayout.setError("Password is required");
+            passwordInputLayout.setError(getString(R.string.password_required));
             hasError = true;
         }
 
         if (hasError) {
-            loginErrorText.setText("Please fill in all fields.");
+            loginErrorText.setText(R.string.please_fill_all_fields);
             return;
         }
 
@@ -150,7 +150,7 @@ public class LoginActivity extends AppCompatActivity {
             });
         } catch (ApiException exception) {
             setLoading(false);
-            loginErrorText.setText("Google sign-in was cancelled. Please try again.");
+            loginErrorText.setText(R.string.google_sign_in_cancelled);
         }
     }
 
@@ -195,7 +195,7 @@ public class LoginActivity extends AppCompatActivity {
         loginSubmitButton.setEnabled(!isLoading);
         googleSignInButton.setEnabled(!isLoading);
         phoneSignInButton.setEnabled(!isLoading);
-        loginSubmitButton.setText(isLoading ? "Logging in..." : "Log In");
-        googleSignInButton.setText(isLoading ? "Connecting..." : getString(R.string.continue_with_google));
+        loginSubmitButton.setText(isLoading ? getString(R.string.logging_in) : getString(R.string.login_title));
+        googleSignInButton.setText(isLoading ? getString(R.string.connecting) : getString(R.string.continue_with_google));
     }
 }

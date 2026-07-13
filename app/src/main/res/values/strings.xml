@@ -34,6 +34,15 @@
     <string name="verification_code_hint">123456</string>
     <string name="verify_code">Verify Code</string>
     <string name="phone_code_sent">Code sent. Check your SMS messages.</string>
+    <string name="firebase_test_code">Firebase test code: 123456</string>
+    <string name="send_verification_first">Send a verification code first.</string>
+    <string name="phone_number_required">Phone number is required</string>
+    <string name="verification_code_required">Verification code is required</string>
+    <string name="sending_code">Sending code...</string>
+    <string name="sending_code_before_verify">Sending code, then verifying...</string>
+    <string name="verifying_code">Verifying code...</string>
+    <string name="please_wait">Please wait...</string>
+    <string name="phone_code_failed">Could not send code. Please check the phone number.</string>
     <string name="signup_title">Sign up</string>
     <string name="manual_signup">Manual Sign-Up</string>
     <string name="student_id_photo">Student ID Photo</string>

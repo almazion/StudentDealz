@@ -90,6 +90,7 @@ public class Code128BarcodeView extends View {
             return new boolean[0];
         }
 
+        // Code 128-B starts with a fixed start pattern, then adds a weighted checksum.
         int checksum = START_CODE_B;
         StringBuilder patternBuilder = new StringBuilder(CODE_128_PATTERNS[START_CODE_B]);
 

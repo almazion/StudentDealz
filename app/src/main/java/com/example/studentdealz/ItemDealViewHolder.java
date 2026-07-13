@@ -8,10 +8,10 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class ItemDealViewHolder extends RecyclerView.ViewHolder {
-  public ImageView itemImage;
-  public TextView discount;
-  public TextView partner;
-  public TextView category;
+    public ImageView itemImage;
+    public TextView discount;
+    public TextView partner;
+    public TextView category;
 
     public ItemDealViewHolder(@NonNull View itemView) {
         super(itemView);

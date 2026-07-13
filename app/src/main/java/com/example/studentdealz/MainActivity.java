@@ -41,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
             );
             return insets;
         });
-// Obtain the FirebaseAnalytics instance.
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         setupLogoutButton();

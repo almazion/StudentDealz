@@ -31,7 +31,7 @@ public class DealRepository {
     public static ListenerRegistration listenToAllDeals(Context context, DealsCallback callback) {
         return FirebaseFirestore.getInstance()
                 .collection(DEALS_COLLECTION)
-                .addSnapshotListener(createDealsListener(context, callback, null));
+                .addSnapshotListener(createDealsListener(context, callback));
     }
 
     public static ListenerRegistration listenToDealsForCategory(Context context, String category,
@@ -39,7 +39,7 @@ public class DealRepository {
         return FirebaseFirestore.getInstance()
                 .collection(DEALS_COLLECTION)
                 .whereEqualTo("category", category)
-                .addSnapshotListener(createDealsListener(context, callback, category));
+                .addSnapshotListener(createDealsListener(context, callback));
     }
 
     public static List<Item> filterDeals(List<Item> sourceItems, String query) {
@@ -52,8 +52,7 @@ public class DealRepository {
         return filteredItems;
     }
 
-    private static EventListener<QuerySnapshot> createDealsListener(Context context, DealsCallback callback,
-                                                                   String fallbackCategory) {
+    private static EventListener<QuerySnapshot> createDealsListener(Context context, DealsCallback callback) {
         return (value, error) -> {
             if (error != null) {
                 Log.e(TAG, "Could not listen to Deals collection.", error);
